@@ -38,7 +38,7 @@ public class ManagerPool {
         if (!queueTask.getPriorityBlockingQueue().isEmpty()) {
 
             List<ExecutorTask> executorTaskList = IntStream.range(0, 3)
-                    .mapToObj(s-> new ExecutorTask(queueTask.getPriorityBlockingQueue()))
+                    .mapToObj(s -> new ExecutorTask(queueTask.getPriorityBlockingQueue()))
                     .collect(Collectors.toList());
 
             executorTaskList.forEach(executorService::execute);
