@@ -20,8 +20,11 @@ public class ControllerTask {
     @GetMapping("/hola")
     @ResponseBody
     public String hola() {
-        CustomMessage customMessage = CustomMessage.builder().id("a").type("a").build();
+        CustomMessage customMessage = CustomMessage.builder().id("a").type("email").build();
         queueTask.getPriorityBlockingQueue().put(customMessage);
+        CustomMessage customMessage2 = CustomMessage.builder().id("b").type("emailre").build();
+        queueTask.getPriorityBlockingQueue().put(customMessage2);
+
         return "has hecho una peticion get";
 
     }

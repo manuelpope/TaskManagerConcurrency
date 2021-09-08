@@ -12,7 +12,8 @@ import org.springframework.stereotype.Component;
 @Data
 @NoArgsConstructor
 @Slf4j
-public class EmailSender implements Task {
+public class EmailSenderAlter implements Task {
+
 
     //private repository
     private EmailModel emailModel;
@@ -23,12 +24,10 @@ public class EmailSender implements Task {
         log.info(this.emailModel.toString());
         log.info("update status to true, done ...." + Thread.currentThread().getName());
         try {
-            Thread.sleep(5000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        //change status task to done
         return false;
     }
 
@@ -36,11 +35,11 @@ public class EmailSender implements Task {
     public Task buildInstance(String id) {
         // heres logic to retrieve data , for now just  mocking
         this.emailModel = new EmailModel();
-        this.emailModel.setSender("Elon");
+        this.emailModel.setSender("jeff");
         this.emailModel.setId(1);
-        this.emailModel.setReceiver("Jeff");
-        this.emailModel.setBody("Space is gold");
-        this.emailModel.setSubject("No pressure");
+        this.emailModel.setReceiver("Elon");
+        this.emailModel.setBody("Space is mine");
+        this.emailModel.setSubject("No pressure RE");
         //logic to recover info of task before someone does it by id
 
         return this;
