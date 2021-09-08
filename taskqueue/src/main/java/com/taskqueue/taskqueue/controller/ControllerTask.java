@@ -1,6 +1,7 @@
 package com.taskqueue.taskqueue.controller;
 
-import com.taskqueue.taskqueue.service.QueueTask;
+import com.taskqueue.taskqueue.model.dto.CustomMessage;
+import com.taskqueue.taskqueue.service.concurrentmanager.QueueTask;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,7 +20,8 @@ public class ControllerTask {
     @GetMapping("/hola")
     @ResponseBody
     public String hola() {
-        queueTask.getPriorityBlockingQueue().put("a");
+        CustomMessage customMessage = CustomMessage.builder().id("a").type("a").build();
+        queueTask.getPriorityBlockingQueue().put(customMessage);
         return "has hecho una peticion get";
 
     }
