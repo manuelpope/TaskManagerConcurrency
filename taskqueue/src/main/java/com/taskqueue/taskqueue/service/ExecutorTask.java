@@ -20,6 +20,7 @@ public class ExecutorTask implements Runnable {
             while (!queueTask.isEmpty()) {
                 log.info(queueTask.take() + " " + Thread.currentThread().getName());
                 log.info("Doing the task --------");
+                //do the magic [strategy , factory, chain Responsibility] pattern to handle the request of type of tasks
             }
 
         } catch (InterruptedException e) {
