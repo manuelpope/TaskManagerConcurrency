@@ -18,6 +18,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Builder
 @Table(name = "SCH_TASK")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class SchedulerModel implements Serializable {
     private static final long serialVersionUID = 1L;
 

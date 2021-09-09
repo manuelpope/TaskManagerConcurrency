@@ -44,6 +44,7 @@ public class EmailSender implements Task {
             e.printStackTrace();
         }
 
+
         //change status task to done
         return true;
     }
@@ -58,12 +59,10 @@ public class EmailSender implements Task {
 
     @Override
     public synchronized Task buildInstance(String id) {
-        // heres logic to retrieve data , for now just  mocking
 
 
         this.emailModel = iEmailRepository.findById(Integer.valueOf(id)).get();
 
-        //logic to recover info of task before someone does it by id
 
         return this;
     }

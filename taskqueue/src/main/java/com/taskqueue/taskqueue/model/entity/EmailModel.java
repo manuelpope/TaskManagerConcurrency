@@ -1,9 +1,12 @@
 package com.taskqueue.taskqueue.model.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * The type Email model.
@@ -12,15 +15,10 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ToString
 @Table(name = "EMAIL")
-public class EmailModel implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class EmailModel extends SchedulerModel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
     private String subject;
     private String body;
     private String receiver;
