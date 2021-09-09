@@ -69,12 +69,6 @@ public class ManagerPool {
             });
 
 
-//            ExecutorTask executorTask = new ExecutorTask(queueTask.getPriorityBlockingQueue());
-//
-//            ExecutorTask executorTask2 = new ExecutorTask(queueTask.getPriorityBlockingQueue());
-//
-//            executorService.execute(executorTask);
-//            executorService.execute(executorTask2);
         } else {
             log.info("no elems in Blocking Queue " + Thread.currentThread().getName());
         }

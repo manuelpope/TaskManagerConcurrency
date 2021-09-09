@@ -30,13 +30,6 @@ public class ExecutorTask implements Runnable {
                 Task flag = managerBuilder.getInstanceOfTask(queueVal);
                 log.info(flag.doTask() + " " + Thread.currentThread().getName());
 
-
-                /* Todo
-                recover id and type x repo, factory return class builder or new instance class of type x,
-                do task()
-                do the magic [strategy , factory, chain Responsibility] pattern to handle the request of type of tasks
-
-                */
             }
 
 
