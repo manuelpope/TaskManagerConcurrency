@@ -12,6 +12,9 @@ import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * The type Manager pool.
+ */
 @Service
 @Slf4j
 public class ManagerPool {
@@ -25,6 +28,11 @@ public class ManagerPool {
     private ManagerBuilder managerBuilder;
 
 
+    /**
+     * Instantiates a new Manager pool.
+     *
+     * @param queueTask the queue task
+     */
     public ManagerPool(QueueTask queueTask) {
         this.queueTask = queueTask;
         this.executorService = Executors.newFixedThreadPool(2);
@@ -32,6 +40,11 @@ public class ManagerPool {
 
     }
 
+    /**
+     * Daemon execution.
+     *
+     * @throws InterruptedException the interrupted exception
+     */
     @Scheduled(fixedRate = 3000)
     public synchronized void daemonExecution() throws InterruptedException {
 

@@ -4,6 +4,9 @@ import lombok.*;
 
 import java.io.Serializable;
 
+/**
+ * The type Email model.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

@@ -8,6 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 
+/**
+ * The type Email sender alter.
+ */
 @Component
 @Data
 @NoArgsConstructor

@@ -10,6 +10,9 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * The type Manager builder.
+ */
 @Component
 @Setter
 public class ManagerBuilder {
@@ -21,6 +24,12 @@ public class ManagerBuilder {
     @Autowired
     private EmailSenderAlter emailSenderAlter;
 
+    /**
+     * Instantiates a new Manager builder.
+     *
+     * @param emailSender      the email sender
+     * @param emailSenderAlter the email sender alter
+     */
     public ManagerBuilder(EmailSender emailSender, EmailSenderAlter emailSenderAlter) {
         this.emailSender = emailSender;
         this.emailSenderAlter = emailSenderAlter;
@@ -30,6 +39,12 @@ public class ManagerBuilder {
     }
 
 
+    /**
+     * Gets instance of task.
+     *
+     * @param customMessage the custom message
+     * @return the instance of task
+     */
     public synchronized Task getInstanceOfTask(CustomMessage customMessage) {
         Task t = this.mapTaskInstance.get(customMessage.getType()).buildInstance(customMessage.getId());
         System.out.println("task:" + t);

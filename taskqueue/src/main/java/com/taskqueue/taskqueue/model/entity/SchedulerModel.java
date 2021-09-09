@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 
+/**
+ * The type Scheduler model.
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

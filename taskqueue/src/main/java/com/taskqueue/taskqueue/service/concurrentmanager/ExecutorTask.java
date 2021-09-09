@@ -8,6 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.PriorityBlockingQueue;
 
+/**
+ * The type Executor task.
+ */
 @AllArgsConstructor
 @Slf4j
 public class ExecutorTask implements Runnable {

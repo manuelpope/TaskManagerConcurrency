@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.concurrent.PriorityBlockingQueue;
 
+/**
+ * The type Queue task.
+ */
 @Service
 @Data
 public class QueueTask {

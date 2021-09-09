@@ -13,6 +13,9 @@ import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * The type Controller task.
+ */
 @RestController
 public class ControllerTask {
 
@@ -21,6 +24,11 @@ public class ControllerTask {
     private QueueTask queueTask;
 
 
+    /**
+     * Hola string.
+     *
+     * @return the string
+     */
     @GetMapping("/hola")
     @ResponseBody
     public String hola() {
@@ -41,6 +49,11 @@ public class ControllerTask {
 
     }
 
+    /**
+     * Chao string.
+     *
+     * @return the string
+     */
     @GetMapping("/chao")
     @ResponseBody
     public String chao() {
