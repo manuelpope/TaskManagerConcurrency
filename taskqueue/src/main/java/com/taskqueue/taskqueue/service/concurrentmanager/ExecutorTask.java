@@ -20,13 +20,13 @@ public class ExecutorTask implements Runnable {
     @Override
     public void run() {
         try {
-            Thread.sleep(100);
-
             while (!queueTask.isEmpty()) {
+
                 CustomMessage queueVal = queueTask.take();
+                System.out.println(queueVal + " " + Thread.currentThread().getName());
                 Task flag = managerBuilder.getInstanceOfTask(queueVal);
                 log.info(flag.doTask() + " " + Thread.currentThread().getName());
-                log.info("pending tasks: " + queueTask.size());
+
 
                 /* Todo
                 recover id and type x repo, factory return class builder or new instance class of type x,
@@ -35,6 +35,7 @@ public class ExecutorTask implements Runnable {
 
                 */
             }
+
 
         } catch (Exception e) {
             e.printStackTrace();

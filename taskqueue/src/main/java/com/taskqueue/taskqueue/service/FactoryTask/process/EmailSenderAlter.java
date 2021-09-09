@@ -20,11 +20,13 @@ public class EmailSenderAlter implements Task {
 
 
     @Override
-    public boolean doTask() {
-        log.info(this.emailModel.toString());
-        log.info("update status to true, done ...." + Thread.currentThread().getName());
+    public synchronized boolean doTask() {
+
+
         try {
-            Thread.sleep(3000);
+            Thread.sleep(1000);
+            log.info(this.emailModel.toString());
+            log.info("update status to true, done ....ID: " + this.emailModel.getId().toString() + "_____" + Thread.currentThread().getName());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -32,11 +34,11 @@ public class EmailSenderAlter implements Task {
     }
 
     @Override
-    public Task buildInstance(String id) {
+    public synchronized Task buildInstance(String id) {
         // heres logic to retrieve data , for now just  mocking
         this.emailModel = new EmailModel();
         this.emailModel.setSender("jeff");
-        this.emailModel.setId(1);
+        this.emailModel.setId(Integer.parseInt(id));
         this.emailModel.setReceiver("Elon");
         this.emailModel.setBody("Space is mine");
         this.emailModel.setSubject("No pressure RE");

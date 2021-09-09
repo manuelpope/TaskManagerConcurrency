@@ -7,8 +7,8 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Component
 @Setter
@@ -24,14 +24,15 @@ public class ManagerBuilder {
     public ManagerBuilder(EmailSender emailSender, EmailSenderAlter emailSenderAlter) {
         this.emailSender = emailSender;
         this.emailSenderAlter = emailSenderAlter;
-        this.mapTaskInstance = new HashMap<>();
+        this.mapTaskInstance = new ConcurrentHashMap<>();
         this.mapTaskInstance.put("email", this.emailSender);
         this.mapTaskInstance.put("emailre", this.emailSenderAlter);
     }
 
 
-    public Task getInstanceOfTask(CustomMessage customMessage) {
+    public synchronized Task getInstanceOfTask(CustomMessage customMessage) {
         Task t = this.mapTaskInstance.get(customMessage.getType()).buildInstance(customMessage.getId());
+        System.out.println("task:" + t);
         return t;
     }
 }

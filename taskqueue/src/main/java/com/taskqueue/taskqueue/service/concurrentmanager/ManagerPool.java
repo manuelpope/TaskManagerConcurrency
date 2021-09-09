@@ -33,7 +33,7 @@ public class ManagerPool {
     }
 
     @Scheduled(fixedRate = 3000)
-    public void daemonExecution() throws InterruptedException {
+    public synchronized void daemonExecution() throws InterruptedException {
 
         // here query and logic to put elements into the queue remember el take has to be place inside runnable
         //in that way it will perform all tasks
@@ -44,7 +44,17 @@ public class ManagerPool {
                     .mapToObj(s -> new ExecutorTask(queueTask.getPriorityBlockingQueue(), managerBuilder))
                     .collect(Collectors.toList());
 
-            executorTaskList.forEach(executorService::execute);
+            executorTaskList.forEach(service -> {
+                try {
+
+                    executorService.execute(service);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                log.info(String.valueOf(queueTask.getPriorityBlockingQueue().toArray().length) + "pendinds");
+            });
+
 
 //            ExecutorTask executorTask = new ExecutorTask(queueTask.getPriorityBlockingQueue());
 //

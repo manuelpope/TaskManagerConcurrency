@@ -18,6 +18,6 @@ public class CustomMessage implements Comparable<CustomMessage> {
 
     @Override
     public int compareTo(CustomMessage customMessage) {
-        return 0;
+        return Integer.parseInt(this.id) - Integer.parseInt(customMessage.getId());
     }
 }

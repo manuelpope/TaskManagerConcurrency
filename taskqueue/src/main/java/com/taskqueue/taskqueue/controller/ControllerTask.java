@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @RestController
 public class ControllerTask {
@@ -20,10 +24,18 @@ public class ControllerTask {
     @GetMapping("/hola")
     @ResponseBody
     public String hola() {
-        CustomMessage customMessage = CustomMessage.builder().id("a").type("email").build();
-        queueTask.getPriorityBlockingQueue().put(customMessage);
-        CustomMessage customMessage2 = CustomMessage.builder().id("b").type("emailre").build();
-        queueTask.getPriorityBlockingQueue().put(customMessage2);
+        Random rand = new Random(); //ins
+        List<String> stringList = Arrays.asList("email", "emailre");
+        List<CustomMessage> executorTaskList = IntStream.range(0, 5)
+                .mapToObj(s -> CustomMessage.builder().id(String.valueOf(s)).type(stringList.get(rand.nextInt(2))).build())
+                .collect(Collectors.toList());
+        executorTaskList.add(CustomMessage.builder().id(String.valueOf(7)).type("emailre").build());
+
+        executorTaskList.forEach((i) -> {
+            System.out.println(i.toString());
+            queueTask.getPriorityBlockingQueue().put(i);
+        });
+
 
         return "has hecho una peticion get";
 
