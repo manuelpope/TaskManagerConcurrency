@@ -1,6 +1,5 @@
 package com.taskqueue.taskqueue.service.concurrentmanager;
 
-import com.taskqueue.taskqueue.service.FactoryTask.ManagerBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -24,19 +23,16 @@ public class ManagerPool {
 
     @Autowired
     private QueueTask queueTask;
-    @Autowired
-    private ManagerBuilder managerBuilder;
+
 
 
     /**
      * Instantiates a new Manager pool.
      *
-     * @param queueTask      the queue task
-     * @param managerBuilder
+     * @param queueTask the queue task
      */
-    public ManagerPool(QueueTask queueTask, ManagerBuilder managerBuilder) {
+    public ManagerPool(QueueTask queueTask) {
         this.queueTask = queueTask;
-        this.managerBuilder = managerBuilder;
         this.executorService = Executors.newFixedThreadPool(2);
 
 
@@ -56,7 +52,7 @@ public class ManagerPool {
         if (!queueTask.getPriorityBlockingQueue().isEmpty()) {
 
             List<ExecutorTask> executorTaskList = IntStream.range(0, 3)
-                    .mapToObj(s -> new ExecutorTask(queueTask.getPriorityBlockingQueue(), managerBuilder))
+                    .mapToObj(s -> new ExecutorTask(queueTask.getPriorityBlockingQueue()))
                     .collect(Collectors.toList());
 
             executorTaskList.forEach(service -> {

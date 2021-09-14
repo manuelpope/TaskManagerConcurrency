@@ -17,7 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Setter
 public class ManagerBuilder {
     //map string and supplier to being a factory of same interface
-    private Map<String, Task> mapTaskInstance;
+    private static Map<String, Task> mapTaskInstance;
     @Autowired
     private EmailSender emailSender;
 
@@ -33,9 +33,9 @@ public class ManagerBuilder {
     public ManagerBuilder(EmailSender emailSender, EmailSenderAlter emailSenderAlter) {
         this.emailSender = emailSender;
         this.emailSenderAlter = emailSenderAlter;
-        this.mapTaskInstance = new ConcurrentHashMap<>();
-        this.mapTaskInstance.put("email", this.emailSender);
-        this.mapTaskInstance.put("emailre", this.emailSenderAlter);
+        mapTaskInstance = new ConcurrentHashMap<>();
+        mapTaskInstance.put("email", this.emailSender);
+        mapTaskInstance.put("emailre", this.emailSenderAlter);
     }
 
 
@@ -45,8 +45,8 @@ public class ManagerBuilder {
      * @param customMessage the custom message
      * @return the instance of task
      */
-    public synchronized Task getInstanceOfTask(CustomMessage customMessage) {
-        Task t = this.mapTaskInstance.get(customMessage.getType()).buildInstance(customMessage.getId());
+    public synchronized static Task getInstanceOfTask(CustomMessage customMessage) {
+        Task t = mapTaskInstance.get(customMessage.getType()).buildInstance(customMessage.getId());
         System.out.println("task:" + t);
         return t;
     }

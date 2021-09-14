@@ -17,7 +17,6 @@ public class ExecutorTask implements Runnable {
 
 
     private PriorityBlockingQueue<CustomMessage> queueTask;
-    private ManagerBuilder managerBuilder;
 
 
     @Override
@@ -27,7 +26,7 @@ public class ExecutorTask implements Runnable {
 
                 CustomMessage queueVal = queueTask.take();
                 System.out.println(queueVal + " " + Thread.currentThread().getName());
-                Task flag = managerBuilder.getInstanceOfTask(queueVal);
+                Task flag = ManagerBuilder.getInstanceOfTask(queueVal);
                 log.info(flag.doTask() + " " + Thread.currentThread().getName());
 
             }

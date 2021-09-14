@@ -42,7 +42,7 @@ public class EmailSenderAlter implements Task {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return false;
+        return true;
     }
 
     private void updateStatusTask() {
