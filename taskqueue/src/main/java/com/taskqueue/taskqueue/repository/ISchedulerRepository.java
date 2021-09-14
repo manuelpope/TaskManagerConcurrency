@@ -1,4 +1,4 @@
-package com.taskqueue.taskqueue.model;
+package com.taskqueue.taskqueue.repository;
 
 import com.taskqueue.taskqueue.model.entity.SchedulerModel;
 import org.springframework.data.jpa.repository.JpaRepository;

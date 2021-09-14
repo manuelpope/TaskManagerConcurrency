@@ -1,9 +1,9 @@
 package com.taskqueue.taskqueue.controller;
 
-import com.taskqueue.taskqueue.model.IEmailRepository;
-import com.taskqueue.taskqueue.model.ISchedulerRepository;
 import com.taskqueue.taskqueue.model.dto.CustomMessage;
 import com.taskqueue.taskqueue.model.entity.EmailModel;
+import com.taskqueue.taskqueue.repository.IEmailRepository;
+import com.taskqueue.taskqueue.repository.ISchedulerRepository;
 import com.taskqueue.taskqueue.service.concurrentmanager.QueueTask;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

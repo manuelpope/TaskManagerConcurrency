@@ -1,9 +1,9 @@
 package com.taskqueue.taskqueue.service.FactoryTask.process;
 
-import com.taskqueue.taskqueue.model.IEmailRepository;
-import com.taskqueue.taskqueue.model.ISchedulerRepository;
 import com.taskqueue.taskqueue.model.entity.EmailModel;
 import com.taskqueue.taskqueue.model.entity.SchedulerModel;
+import com.taskqueue.taskqueue.repository.IEmailRepository;
+import com.taskqueue.taskqueue.repository.ISchedulerRepository;
 import com.taskqueue.taskqueue.service.FactoryTask.Task;
 import lombok.Data;
 import lombok.NoArgsConstructor;

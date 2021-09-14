@@ -31,10 +31,12 @@ public class ManagerPool {
     /**
      * Instantiates a new Manager pool.
      *
-     * @param queueTask the queue task
+     * @param queueTask      the queue task
+     * @param managerBuilder
      */
-    public ManagerPool(QueueTask queueTask) {
+    public ManagerPool(QueueTask queueTask, ManagerBuilder managerBuilder) {
         this.queueTask = queueTask;
+        this.managerBuilder = managerBuilder;
         this.executorService = Executors.newFixedThreadPool(2);
 
 
